@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:layout_margin="8dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Complaint Name"
+        android:id="@+id/complaint_name"
+        android:textColor="#000"
+        android:textSize="25dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/imageView1"
+            android:layout_weight="0.33"
+            android:layout_margin="5dp"
+            android:src="@drawable/camera"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/imageView2"
+            android:layout_weight="0.33"
+            android:layout_margin="5dp"
+            android:src="@drawable/camera"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/imageView3"
+            android:layout_weight="0.33"
+            android:layout_margin="5dp"
+            android:src="@drawable/camera"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="What Problem Are You Facing?"
+        android:background="#fff"
+        android:padding="10dp"
+        android:id="@+id/comp_desc"
+        android:layout_margin="5dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="#fff"
+            android:layout_margin="5dp"
+            android:id="@+id/cont_pers"
+            android:hint="Contact Person's Name"
+           />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:padding="10dp"
+            android:inputType="phone"
+            android:id="@+id/mob_no"
+            android:layout_margin="5dp"
+            android:hint="Mobile No"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAddress"
+            android:hint="Address"
+            android:background="#fff"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:layout_weight="0.2"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnShowAddress"
+            android:background="@drawable/location"
+            android:layout_weight="0.85"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:text="Sector/Zone : "
+            android:textColor="#000"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sector"
+            android:layout_weight="1"
+            android:background="@drawable/spinner_background_ab_example"
+            android:entries="@array/sector_array"
+           />
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="19dp"
+        android:text="Area :"
+        android:textColor="#000"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/area"
+        android:layout_weight="1"
+        android:background="@drawable/spinner_background_ab_example"
+        android:layout_marginLeft="72dp"
+        android:entries="@array/west"
+
+        />
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:weightSum="1">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="19dp"
+        android:text="Submit"
+        android:id="@+id/submit"
+        android:padding="20dp"
+        android:layout_weight="0.5"
+        android:layout_margin="10dp"
+        android:textColor="#fff"
+        android:background="@drawable/buttonhome"
+        android:onClick="onClick"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="19dp"
+        android:text="Cancle"
+        android:id="@+id/cancle"
+        android:padding="20dp"
+        android:textColor="#fff"
+        android:layout_weight="0.5"
+        android:layout_margin="10dp"
+        android:background="@drawable/buttonhome"
+        android:onClick="onClick"/>
+
+    </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

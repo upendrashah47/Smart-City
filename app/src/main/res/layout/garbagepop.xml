@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="35dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sub Category"
+            android:textSize="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="60dp"
+            android:textColor="#FF6600"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Close"
+            android:id="@+id/close"
+            android:textSize="18dp"
+            android:layout_margin="8dp"
+            android:padding="2dp"
+            android:onClick="onClick"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginTop="55dp">
+
+        <Button
+            android:layout_width="178dp"
+            android:layout_height="136dp"
+            android:text="Dustbin Container"
+            android:id="@+id/dcontainer"
+            android:textSize="18dp"
+            android:layout_margin="5dp"
+            android:padding="2dp"
+            android:background="@drawable/citizenbtn"
+            android:onClick="onClick"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="136dp"
+            android:text="Door to Door"
+            android:id="@+id/dtod"
+            android:padding="29dp"
+            android:textSize="18dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/citizenbtn"
+            android:onClick="onClick"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:layout_width="178dp"
+            android:layout_height="136dp"
+            android:text="Open Spot"
+            android:id="@+id/openspot"
+            android:textSize="18dp"
+            android:layout_margin="5dp"
+            android:padding="2dp"
+            android:background="@drawable/citizenbtn"
+            android:onClick="onClick"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="136dp"
+            android:text="Cleaning Worker"
+            android:id="@+id/cleanworker"
+            android:padding="29dp"
+            android:textSize="18dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/citizenbtn"
+            android:onClick="onClick"/>
+    </LinearLayout>
+</LinearLayout>

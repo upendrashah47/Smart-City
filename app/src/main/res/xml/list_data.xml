@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="adobe_products">
+        <item>Adl_historical</item>
+        <item>jama_masjid</item>
+        <item>Kakariya_historical</item>
+        <item>Naginavadi</item>
+        <item>Sabermatiashram</item>
+        <item>Sarkhejroza</item>
+        <item>Sidisayyad</item>
+        <item>Teen_darwaza</item>
+    </string-array>
+</resources>

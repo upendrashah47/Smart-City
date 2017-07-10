@@ -1,0 +1,269 @@
+<resources>
+    <string name="app_name">Smart City</string>
+    <string name="action_settings">Settings</string>
+    <string name="citizen_corner">Citizen\'s Corner</string>
+    <string name="know_your_city">Know Your City</string>
+    <string name="one_touch_helpline">One Touch HelpLine</string>
+    <string name="download_forms">Download Forms</string>
+    <string name="city_news_events">City News &amp; Events</string>
+    <string name="change_password">Change Password</string>
+    <string name="feedback">Feedback</string>
+    <string name="daily_problem">Daily Problem</string>
+    <string name="user_guide">User Guide</string>
+    <string name="view_status">View Status</string>
+    <string name="change_city">Change City</string>
+    <string name="water">Water</string>
+    <string name="drainage">Drainage</string>
+    <string name="garbage">Garbage</string>
+    <string name="roads">Road</string>
+    <string name="street_lights">Street Lights</string>
+    <string name="stray_animals">Stray Animals</string>
+    <string name="food_adulteration">Food Adulteration</string>
+    <string name="fallen_tree">Fallen Tree</string>
+    <string name="illegal_construction">Illegal Construction</string>
+    <string name="public_toilet">Public Toilet</string>
+    <string name="dead_animals">Dead Animals</string>
+    <string name="e_waste">E-waste</string>
+
+    <!-- Put your own APP ID here -->
+    <!--<string name="open_weather_maps_app_id">44db6a862fba0b067b1930da0d769e98</string>-->
+    <string name="open_weather_maps_app_id">fa73a44154c73c03015385120c8a166b</string>
+
+    <string name="weather_sunny">&#xf00d;</string>
+    <string name="weather_clear_night">&#xf02e;</string>
+    <string name="weather_foggy">&#xf014;</string>
+    <string name="weather_cloudy">&#xf013;</string>
+    <string name="weather_rainy">&#xf019;</string>
+    <string name="weather_snowy">&#xf01b;</string>
+    <string name="weather_thunder">&#xf01e;</string>
+    <string name="weather_drizzle">&#xf01c;</string>
+
+    <!-- Login and Signup Activity Paage -->
+    <string name="forgotpassword">Forgot password?</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="cancle">Cancle</string>
+    <string name="showpwd">Show password</string>
+    <string name="fname">First name</string>
+    <string name="lname">Last name</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="confirmPassword">Conform password</string>
+    <string name="send">Send</string>
+    <string name="alert">Alert</string>
+    <string name="ok">Ok</string>
+    <string name="enterMobile">Please enter mobile number</string>
+    <string name="enterPassword">Please enter password</string>
+    <string name="enterEmail">Please enter email</string>
+    <string name="enterValidEmail">Please enter valid email</string>
+    <string name="enterFirstName">Please enter first name</string>
+    <string name="enterLastName">Please enter last name</string>
+    <string name="unmatchPassword">Password doesn\'t match</string>
+    <string name="selectCheckbox">Please select checkbox</string>
+
+    <!--Change Password-->
+    <string name="confirm">Confirm</string>
+    <string name="oldPassword">Old password</string>
+    <string name="newPassword">New password</string>
+
+
+    <string name="place_not_found">Sorry, no weather data found.</string>
+
+    <!--Youtube -->
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="introduction">Application introduction</string>
+    <string name="loginProcess">How to login &amp; registration?</string>
+    <string name="complaintRegistrationProcess">How to register a complaint?</string>
+    <string name="cityInformationProcess">How to see city information?</string>
+    <string name="changePasswordProcess">How to change password &amp; contact us?</string>
+    <string name="intentVideoId">INTENT_VIDEO_ID</string>
+
+    <string-array name="sector_array">
+        <item>West</item>
+        <item>East</item>
+        <item>South</item>
+        <item>North</item>
+        <item>Central</item>
+        <item>New West</item>
+    </string-array>
+
+    <string-array name="helpline">
+        <item>Emergency No</item>
+        <item>Amc Address</item>
+        <item>Police Station</item>
+        <item>Library</item>
+        <item>Gym</item>
+        <item>Hospital</item>
+        <item>Bus Inquiry</item>
+    </string-array>
+
+    <string-array name="west">
+        <item>Chandkheda-Motera</item>
+        <item>Sabarmati</item>
+        <item>Naranpura</item>
+        <item>Nava Vadaj</item>
+        <item>Juna Vadaj</item>
+        <item>S.P Stadium</item>
+        <item>Aambawadi</item>
+        <item>Navrangpura</item>
+        <item>Paldi</item>
+        <item>Vasna</item>
+        <item>Motera</item>
+    </string-array>
+
+    <string-array name="East">
+        <item>Nikol</item>
+        <item>Viratnagar</item>
+        <item>Bapunagar</item>
+        <item>Gomtipur</item>
+        <item>Rakhial</item>
+        <item>Rajpur</item>
+        <item>Arbudanagr</item>
+        <item>Odhav</item>
+        <item>Vastral</item>
+        <item>Mahavirnagar</item>
+        <item>Bhaipura-Hatkeshwar</item>
+        <item>Ramol-Hathijan</item>
+    </string-array>
+
+    <string-array name="south">
+
+        <item>Behrampura</item>
+        <item>Kankariya</item>
+        <item>Indrapuri</item>
+        <item>Khokhra</item>
+        <item>Maninagar</item>
+        <item>Danilimda</item>
+        <item>Lambha</item>
+        <item>Isanpur</item>
+        <item>Ghodasar</item>
+        <item>Vatva</item>
+    </string-array>
+
+    <string-array name="north">
+        <item>Sardarnagar</item>
+        <item>Nobalnagar</item>
+        <item>Naroda</item>
+        <item>Kubernagar</item>
+        <item>Saijpur-Bogha</item>
+        <item>Meghaninagar</item>
+        <item>Asarva</item>
+        <item>Naroda Road</item>
+        <item>India Colony</item>
+        <item>Krushnanagar</item>
+        <item>Thakkarbapanagar</item>
+        <item>Saraspur</item>
+        <item>Nava Naroda</item>
+    </string-array>
+
+    <string-array name="central">
+        <item>Girdharnagar</item>
+        <item>Madhupura</item>
+        <item>Dudheshvar</item>
+        <item>Shahpur</item>
+        <item>Dariapur</item>
+        <item>Kalupur</item>
+        <item>Raikhad</item>
+        <item>Jamalpur</item>
+        <item>Khadia</item>
+    </string-array>
+
+    <string-array name="new_west">
+        <item>Gota</item>
+        <item>Chandlodiya</item>
+        <item>Kali</item>
+        <item>Ranip</item>
+        <item>Ghatlodiya</item>
+        <item>Thaltej</item>
+        <item>Bodakdev</item>
+        <item>Sarkhej</item>
+        <item>Jodhpur</item>
+        <item>Vejalpur</item>
+        <item>Makarba</item>
+        <item>Memnagar</item>
+        <item>Vastrapur</item>
+    </string-array>
+
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login_activity -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">Contacts permissions are needed for providing email completions.</string>
+
+
+    <!-- Strings related to tab -->
+    <string name="label1">Historical Place</string>
+    <string name="label2">Tourist Info</string>
+    <string name="label3">Traffic Info</string>
+    <string name="body1"> body one</string>
+    <string name="body2">body two</string>
+    <string name="icon_content_description">icon_content_description</string>
+
+
+    <string name="temperature">Temperature</string>
+    <string name="condition">Condition</string>
+    <string name="location">Location</string>
+    <string name="powered_by_yahoo">powered by Yahoo!</string>
+    <string name="condition_icon">Condition Icon</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="temperature_output">%1$d&#176;%2$s</string>
+    <string name="update_location">Update Location</string>
+    <string name="cache_exception">No Cached Weather Data</string>
+
+    <string name="str_btn_find">Find</string>
+
+    <string-array name="place_type">
+        <item>airport</item>
+        <item>atm</item>
+        <item>bank</item>
+        <item>bus_station</item>
+        <item>church</item>
+        <item>doctor</item>
+        <item>hospital</item>
+        <item>mosque</item>
+        <item>movie_theater</item>
+        <item>hindu_temple</item>
+        <item>restaurant</item>
+    </string-array>
+
+
+    <string-array name="place_type_name">
+        <item>Airport</item>
+        <item>ATM</item>
+        <item>Bank</item>
+        <item>Bus Station</item>
+        <item>Church</item>
+        <item>Doctor</item>
+        <item>Hospital</item>
+        <item>Mosque</item>
+        <item>Movie Theater</item>
+        <item>Hindu Temple</item>
+        <item>Restaurant</item>
+    </string-array>
+
+    <string-array name="places">
+        <item>ATM</item>
+        <item>Bank</item>
+        <item>Cafe</item>
+        <item>Fire-Station</item>
+        <item>Hospital</item>
+        <item>Pharmacy</item>
+        <item>Police</item>
+        <item>Restaurant</item>
+        <item>Shopping Mall</item>
+    </string-array>
+
+    <!-- Database -->
+    <string name="createZone">CREATE TABLE IF NOT EXISTS zone (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)</string>
+    <string name="createArea">CREATE TABLE IF NOT EXISTS area (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, zone_id INTEGER, FOREIGN KEY(zone_id) REFERENCES zone(id) ON DELETE CASCADE)</string>
+    <string name="createTouristPlace">CREATE TABLE IF NOT EXISTS tourist_place (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, image TEXT, description TEXT, contact TEXT)</string>
+    <string name="insertUser">INSERT INTO zone (id, name) VALUES (?, ?)</string>
+
+</resources>
