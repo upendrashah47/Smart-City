@@ -37,4 +37,13 @@ public class Utils {
     public static String getResourceString(Context context, int resId) {
         return context.getResources().getString(resId);
     }
+
+    /*
+    * Function free the memory.
+    * */
+    public static void freeMemory() {
+        System.runFinalization();
+        Runtime.getRuntime().gc();
+        System.gc();
+    }
 }
