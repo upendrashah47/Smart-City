@@ -20,7 +20,7 @@ public class HolidayCalenderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //sets the main floating_button of the activity
+        //sets the main activity_weather of the activity
         setContentView(R.layout.holiday_calender_activity);
 
         //initializes the calendarview

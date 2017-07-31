@@ -21,47 +21,52 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.us.smartcity.data;
+package com.us.smartcity.weather.data;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Condition implements JSONPopulator {
-    private int code;
-    private int temperature;
-    private String description;
+public class Item implements JSONPopulator {
+    private Condition condition;
+    private Condition[] forecast;
 
-    public int getCode() {
-        return code;
+    public Condition getCondition() {
+        return condition;
     }
 
-    public int getTemperature() {
-        return temperature;
-    }
-
-    public String getDescription() {
-        return description;
+    public Condition[] getForecast() {
+        return forecast;
     }
 
     @Override
     public void populate(JSONObject data) {
-        code = data.optInt("code");
-        temperature = data.optInt("temp");
-        description = data.optString("text");
+        condition = new Condition();
+        condition.populate(data.optJSONObject("condition"));
+
+        JSONArray forecastData = data.optJSONArray("forecast");
+
+        forecast = new Condition[forecastData.length()];
+
+        for (int i = 0; i < forecastData.length(); i++) {
+            forecast[i] = new Condition();
+            try {
+                forecast[i].populate(forecastData.getJSONObject(i));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public JSONObject toJSON() {
         JSONObject data = new JSONObject();
-
         try {
-            data.put("code", code);
-            data.put("temp", temperature);
-            data.put("text", description);
+            data.put("condition", condition.toJSON());
+            data.put("forecast", new JSONArray(forecast));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return data;
     }
 }

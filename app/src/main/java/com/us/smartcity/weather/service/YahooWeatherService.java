@@ -22,17 +22,17 @@
  * THE SOFTWARE.
  *
  */
-package com.us.smartcity.service;
+package com.us.smartcity.weather.service;
 
-import android.location.Location;
+import android.net.Uri;
 import android.os.AsyncTask;
 
-import com.us.smartcity.data.LocationResult;
-import com.us.smartcity.listener.GeocodingServiceListener;
+import com.us.smartcity.weather.data.Channel;
+import com.us.smartcity.weather.listener.WeatherServiceListener;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import com.us.smartcity.ui.WeatherActivity;
+
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -40,22 +40,38 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class GoogleMapsGeocodingService {
-    private GeocodingServiceListener listener;
+public class YahooWeatherService {
+    private WeatherServiceListener listener;
     private Exception error;
+    private String temperatureUnit = "C";
 
-    public GoogleMapsGeocodingService(WeatherActivity listener) {
+    public YahooWeatherService(WeatherActivity listener) {
         this.listener = listener;
     }
 
-    public void refreshLocation(Location location) {
-        new AsyncTask<Location, Void, LocationResult>() {
+    public String getTemperatureUnit() {
+        return temperatureUnit;
+    }
+
+    public void setTemperatureUnit(String temperatureUnit) {
+        this.temperatureUnit = temperatureUnit;
+    }
+
+    public void refreshWeather(String location) {
+
+        new AsyncTask<String, Void, Channel>() {
             @Override
-            protected LocationResult doInBackground(Location... locations) {
+            protected Channel doInBackground(String[] locations) {
 
-                Location location = locations[0];
+                String location = locations[0];
 
-                String endpoint = String.format("https://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&key=%s", location.getLatitude(), location.getLongitude(), API_KEY);
+                Channel channel = new Channel();
+
+                String unit = getTemperatureUnit().equalsIgnoreCase("f") ? "f" : "c";
+
+                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\") and u='" + unit + "'", location);
+
+                String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=%s&format=json", Uri.encode(YQL));
 
                 try {
                     URL url = new URL(endpoint);
@@ -74,18 +90,19 @@ public class GoogleMapsGeocodingService {
 
                     JSONObject data = new JSONObject(result.toString());
 
-                    JSONArray results = data.optJSONArray("results");
+                    JSONObject queryResults = data.optJSONObject("query");
 
-                    if (results.length() == 0) {
-                        error = new ReverseGeolocationException("Could not reverse geocode " + location.getLatitude() + ", " + location.getLongitude());
+                    int count = queryResults.optInt("count");
 
+                    if (count == 0) {
+                        error = new LocationWeatherException("No weather information found for " + location);
                         return null;
                     }
 
-                    LocationResult locationResult = new LocationResult();
-                    locationResult.populate(results.optJSONObject(0));
+                    JSONObject channelJSON = queryResults.optJSONObject("results").optJSONObject("channel");
+                    channel.populate(channelJSON);
 
-                    return locationResult;
+                    return channel;
 
                 } catch (Exception e) {
                     error = e;
@@ -95,12 +112,12 @@ public class GoogleMapsGeocodingService {
             }
 
             @Override
-            protected void onPostExecute(LocationResult location) {
+            protected void onPostExecute(Channel channel) {
 
-                if (location == null && error != null) {
-                    listener.geocodeFailure(error);
+                if (channel == null && error != null) {
+                    listener.serviceFailure(error);
                 } else {
-                    listener.geocodeSuccess(location);
+                    listener.serviceSuccess(channel);
                 }
 
             }
@@ -108,11 +125,8 @@ public class GoogleMapsGeocodingService {
         }.execute(location);
     }
 
-    // OPTIONAL: Your Google Maps API KEY
-    private static final String API_KEY = "";
-
-    private class ReverseGeolocationException extends Exception {
-        public ReverseGeolocationException(String detailMessage) {
+    public class LocationWeatherException extends Exception {
+        public LocationWeatherException(String detailMessage) {
             super(detailMessage);
         }
     }

@@ -21,22 +21,51 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.us.smartcity.data;
+package com.us.smartcity.weather.data;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LocationResult implements JSONPopulator {
+public class Condition implements JSONPopulator {
+    private int code;
+    private int temperature;
+    private int highTemperature;
+    private int lowTemperature;
+    private String description;
+    private String day;
 
-    private String address;
+    public int getCode() {
+        return code;
+    }
 
-    public String getAddress() {
-        return address;
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public int getHighTemperature() {
+        return highTemperature;
+    }
+
+    public int getLowTemperature() {
+        return lowTemperature;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getDay() {
+        return day;
     }
 
     @Override
     public void populate(JSONObject data) {
-        address = data.optString("formatted_address");
+        code = data.optInt("code");
+        temperature = data.optInt("temp");
+        highTemperature = data.optInt("high");
+        lowTemperature = data.optInt("low");
+        description = data.optString("text");
+        day = data.optString("day");
     }
 
     @Override
@@ -44,8 +73,15 @@ public class LocationResult implements JSONPopulator {
         JSONObject data = new JSONObject();
 
         try {
-            data.put("formatted_address", address);
-        } catch (JSONException e) {}
+            data.put("code", code);
+            data.put("temp", temperature);
+            data.put("high", highTemperature);
+            data.put("low", lowTemperature);
+            data.put("text", description);
+            data.put("day", day);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return data;
     }

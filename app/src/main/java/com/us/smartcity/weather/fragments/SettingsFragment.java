@@ -1,18 +1,18 @@
 /**
  * The MIT License (MIT)
- *
+ * <p>
  * Copyright (c) 2015 Yoel Nunez <dev@nunez.guru>
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,9 +20,8 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
  */
-package com.us.smartcity.fragments;
+package com.us.smartcity.weather.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,10 +36,11 @@ import android.view.MenuItem;
 
 import com.us.smartcity.R;
 import com.us.smartcity.ui.WeatherActivity;
+import com.us.smartcity.utils.Config;
+import com.us.smartcity.utils.Pref;
 
 public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private SharedPreferences preferences;
 
     private SwitchPreference geolocationEnabledPreference;
     private EditTextPreference manualLocationPreference;
@@ -50,7 +50,6 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.app_preferences);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         geolocationEnabledPreference = (SwitchPreference) findPreference(getString(R.string.pref_geolocation_enabled));
         manualLocationPreference = (EditTextPreference) findPreference(getString(R.string.pref_manual_location));
@@ -62,10 +61,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
         onSharedPreferenceChanged(null, null);
 
-        if(!preferences.getBoolean(getString(R.string.pref_needs_setup), false)) {
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean(getString(R.string.pref_needs_setup), false);
-            editor.apply();
+        if (!Pref.getBoolean(getActivity(), Config.PREF_NEED_SETUP, false)) {
+            Pref.setBoolean(getActivity(), Config.PREF_NEED_SETUP, false);
         }
 
         setHasOptionsMenu(true);
@@ -92,7 +89,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
     private void bindPreferenceSummaryToValue(Preference preference) {
         preference.setOnPreferenceChangeListener(this);
-        onPreferenceChange(preference, preferences.getString(preference.getKey(), null));
+        onPreferenceChange(preference, Pref.getString(getActivity(), preference.getKey(), null));
     }
 
     @Override

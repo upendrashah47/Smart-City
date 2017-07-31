@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.us.smartcity.data;
+package com.us.smartcity.weather.data;
 
 import org.json.JSONObject;
 

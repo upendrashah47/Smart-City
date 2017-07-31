@@ -1,12 +1,12 @@
 
-package com.us.smartcity.service;
+package com.us.smartcity.weather.service;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.us.smartcity.R;
-import com.us.smartcity.data.Channel;
-import com.us.smartcity.listener.WeatherServiceListener;
+import com.us.smartcity.weather.data.Channel;
+import com.us.smartcity.weather.listener.WeatherServiceListener;
 
 import org.json.JSONObject;
 import com.us.smartcity.ui.WeatherActivity;

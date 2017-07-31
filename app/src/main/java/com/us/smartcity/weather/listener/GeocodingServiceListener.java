@@ -22,9 +22,9 @@
  * THE SOFTWARE.
  *
  */
-package com.us.smartcity.listener;
+package com.us.smartcity.weather.listener;
 
-import com.us.smartcity.data.LocationResult;
+import com.us.smartcity.weather.data.LocationResult;
 
 
 

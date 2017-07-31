@@ -11,9 +11,7 @@ import android.os.Handler;
 import android.view.Menu;
 
 import com.us.smartcity.R;
-import com.us.smartcity.utils.Config;
 import com.us.smartcity.utils.Log;
-import com.us.smartcity.utils.Pref;
 import com.us.smartcity.utils.Utils;
 
 public class SplashActivity extends BaseActivity {
@@ -60,14 +58,9 @@ public class SplashActivity extends BaseActivity {
         public void handleMessage(android.os.Message msg) {
 
 //            syncAPI();
-            if (Pref.getInt(context, Config.PREF_IS_LOGIN, 0) == 1) {
-                Intent intent = new Intent(context, HomeActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(context, WeatherActivity.class);
+            startActivity(intent);
 
-            } else {
-                Intent intent = new Intent(context, LoginActivity.class);
-                startActivity(intent);
-            }
         }
     };
 
