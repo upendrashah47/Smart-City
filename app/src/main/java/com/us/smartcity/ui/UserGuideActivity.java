@@ -33,31 +33,31 @@ public class UserGuideActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.txvIntoduction:
                 intent = new Intent(context, YoutubeActivity.class);
-                intent.putExtra(Utils.getResourceString(context, R.string.intentVideoId), Config.YOUTUBE_INTRODUCTION);
+                intent.putExtra(Utils.getResourceSting(context, R.string.intentVideoId), Config.YOUTUBE_INTRODUCTION);
                 startActivity(intent);
                 break;
 
             case R.id.txvLoginProcess:
                 intent = new Intent(context, YoutubeActivity.class);
-                intent.putExtra(Utils.getResourceString(context, R.string.intentVideoId), Config.YOUTUBE_LOGIN_REGISTRATION);
+                intent.putExtra(Utils.getResourceSting(context, R.string.intentVideoId), Config.YOUTUBE_LOGIN_REGISTRATION);
                 startActivity(intent);
                 break;
 
             case R.id.txvComplaintRegistrationProcess:
                 intent = new Intent(context, YoutubeActivity.class);
-                intent.putExtra(Utils.getResourceString(context, R.string.intentVideoId), Config.YOUTUBE_COMPLAINT_REGISTRATION);
+                intent.putExtra(Utils.getResourceSting(context, R.string.intentVideoId), Config.YOUTUBE_COMPLAINT_REGISTRATION);
                 startActivity(intent);
                 break;
 
             case R.id.txvChangePasswordProcess:
                 intent = new Intent(context, YoutubeActivity.class);
-                intent.putExtra(Utils.getResourceString(context, R.string.intentVideoId), Config.YOUTUBE_CHANGE_PASSWORD);
+                intent.putExtra(Utils.getResourceSting(context, R.string.intentVideoId), Config.YOUTUBE_CHANGE_PASSWORD);
                 startActivity(intent);
                 break;
 
             case R.id.txvCityInformationProcess:
                 intent = new Intent(context, YoutubeActivity.class);
-                intent.putExtra(Utils.getResourceString(context, R.string.intentVideoId), Config.YOUTUBE_CITY_INFORMATION);
+                intent.putExtra(Utils.getResourceSting(context, R.string.intentVideoId), Config.YOUTUBE_CITY_INFORMATION);
                 startActivity(intent);
                 break;
         }

@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.us.smartcity.R;
-import com.us.smartcity.utils.Utils;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,7 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.activity_login);
         context = LoginActivity.this;
 
         findViewById();
@@ -38,32 +37,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-
+        String validate;
         switch (v.getId()) {
             case R.id.btnLogin:
-
-                if (edtMobileNo.getText().toString().trim().equals("") || edtPassword.getText().toString().trim().equals("")) {
-                    if (edtMobileNo.getText().toString().trim().equals("")) {
-                        Utils.showAlert(context, Utils.getResourceString(context, R.string.alert), Utils.getResourceString(context, R.string.enterMobile), Utils.getResourceString(context, R.string.ok));
-
-                    } else if (edtPassword.getText().toString().trim().equals("")) {
-                        Utils.showAlert(context, Utils.getResourceString(context, R.string.alert), Utils.getResourceString(context, R.string.enterPassword), Utils.getResourceString(context, R.string.ok));
-
-                    }
-                } else if (edtMobileNo.getText().toString().trim().equals("9725611734") || edtPassword.getText().toString().trim().equals("upen")) {
-                    Toast.makeText(context, "Thank you for login_activity Upen", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                } else if (edtMobileNo.getText().toString().trim().equals("9662640428") || edtPassword.getText().toString().trim().equals("kinjal")) {
-                    Toast.makeText(context, "Thank you for login_activity Kinjal", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                } else if (edtMobileNo.getText().toString().trim().equals("7802805226") || edtPassword.getText().toString().trim().equals("rahul")) {
-                    Toast.makeText(context, "Thank you for login_activity Rahul", Toast.LENGTH_SHORT).show();
+                validate = validation();
+                if (validate == null) {
                     intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(context, "You are not Registered", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, validate, Toast.LENGTH_SHORT).show();
                 }
                 finish();
                 break;
@@ -90,4 +72,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtForgotPassword.setOnClickListener(this);
 
     }
+
+    public String validation() {
+        String valid = null;
+        if (edtMobileNo.getText().toString().trim().equals("")) {
+            valid = getResources().getString(R.string.validemail);
+            this.edtMobileNo.requestFocus();
+            this.edtMobileNo.setSelection(this.edtMobileNo.length());
+        } else if (edtMobileNo.getText().toString().trim().length() > 10) {
+            valid = getResources().getString(R.string.invalidEmailLength);
+            this.edtMobileNo.requestFocus();
+            this.edtMobileNo.setSelection(this.edtMobileNo.length());
+        } else if (edtPassword.getText().toString().trim().equals("")) {
+            valid = getResources().getString(R.string.validblankpassword);
+            this.edtPassword.requestFocus();
+            this.edtPassword.setSelection(this.edtPassword.length());
+        } else if (edtPassword.getText().toString().trim().length() < 8 || edtPassword.getText().toString().trim().length() > 20) {
+            valid = getResources().getString(R.string.invalidnewpasswordlength);
+            this.edtPassword.requestFocus();
+            this.edtPassword.setSelection(this.edtPassword.length());
+        }
+        return valid;
+    }
+
 }

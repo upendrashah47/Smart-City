@@ -33,7 +33,7 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
         setContentView(R.layout.youtube_activity);
         context = YoutubeActivity.this;
-        videoId = getIntent().getStringExtra(Utils.getResourceString(context, R.string.intentVideoId));
+        videoId = getIntent().getStringExtra(Utils.getResourceSting(context, R.string.intentVideoId));
         Log.print("============= videoId ======= " + videoId);
 
         //city information : https://www.youtube.com/watch?v=_ydOo4qN2HM

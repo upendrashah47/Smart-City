@@ -40,7 +40,6 @@
 
     <!-- Login and Signup Activity Paage -->
     <string name="forgotpassword">Forgot password?</string>
-    <string name="login">Login</string>
     <string name="signup">Signup</string>
     <string name="cancle">Cancle</string>
     <string name="showpwd">Show password</string>
@@ -186,7 +185,7 @@
 
     <string name="title_activity_login">Sign in</string>
 
-    <!-- Strings related to login_activity -->
+    <!-- Strings related to activity_login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -266,4 +265,37 @@
     <string name="createTouristPlace">CREATE TABLE IF NOT EXISTS tourist_place (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, image TEXT, description TEXT, contact TEXT)</string>
     <string name="insertUser">INSERT INTO zone (id, name) VALUES (?, ?)</string>
 
+    <!-- Login -->
+    <string name="loginWithFB">Login With Facebook</string>
+    <string name="loginWithGoogle">Login With Google</string>
+    <string name="yourEmail">Your Email</string>
+    <string name="yourPassword">Your Password</string>
+    <string name="contributor">Contributor</string>
+    <string name="login">LOGIN</string>
+    <string name="forgotPass">Forgot Your Password?</string>
+    <string name="wouldYouLikeToRegister">Would you like to register?</string>
+    <string name="registerHere">Register Here</string>
+    <string name="validemail">Email cannot be blank</string>
+    <string name="invalidEmail">Please enter valid email</string>
+    <string name="invalidEmailLength">Email must not exceed 100 characters</string>
+    <string name="validblankpassword">Password cannot be blank</string>
+    <string name="invalidnewpasswordlength">Password must be of 8&#8211;20 characters long</string>
+    <string name="chooseYourType">Choose Your Type</string>
+    <string name="usernameCharacterAllow">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.</string>
+    <string name="emailCharacterAllow">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.-_@</string>
+    <string name="bioCharacterAllow">qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890,.! ?:-</string>
+
+    <!-- Local storage Provide -->
+    <string name="internal_storage">Internal Storage</string>
+
+    <!-- Alert -->
+    <string name="Alert">Alert</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancelUpper">CANCEL</string>
+    <string name="message">Message</string>
+    <string name="connectionErrorMessage">Pocket Experts is experiencing a connection error</string>
+    <string name="internetConnection">Internet Connection</string>
+    <string name="doYouWantToExit">Do you want to exit?</string>
+    <string name="exit">Exit</string>
 </resources>

@@ -19,8 +19,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.us.smartcity.database.DatabaseHelper;
 import com.us.smartcity.R;
+import com.us.smartcity.database.DatabaseHelper;
 import com.us.smartcity.utils.Utils;
 
 import java.util.Calendar;
@@ -78,7 +78,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     startActivity(intent);
                     finish();
                 } else {
-                    Utils.showAlert(context, Utils.getResourceString(context, R.string.alert), mesg, Utils.getResourceString(context, R.string.ok));
+//                    Utils.showAlert(context, Utils.getResourceString(context, R.string.alert), mesg, Utils.getResourceString(context, R.string.ok));
                 }
                 break;
 
@@ -121,31 +121,28 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         String mesg = null;
 
         if (edtFirstName.getText().toString().trim().equals("")) {
-            mesg = Utils.getResourceString(context, R.string.enterFirstName);
+            mesg = Utils.getResourceSting(context, R.string.enterFirstName);
 
         } else if (edtLastName.getText().toString().trim().equals("")) {
-            mesg = Utils.getResourceString(context, R.string.enterLastName);
+            mesg = Utils.getResourceSting(context, R.string.enterLastName);
 
         } else if (edtPassword.getText().toString().trim().equals("")) {
-            mesg = Utils.getResourceString(context, R.string.enterPassword);
+            mesg = Utils.getResourceSting(context, R.string.enterPassword);
 
         } else if (edtEmail.getText().toString().trim().equals("")) {
-            mesg = Utils.getResourceString(context, R.string.enterEmail);
-
-        } else if (!Utils.EMAIL_PATTERN.matcher(edtEmail.getText().toString().trim()).matches()) {
-            mesg = Utils.getResourceString(context, R.string.enterValidEmail);
+            mesg = Utils.getResourceSting(context, R.string.enterEmail);
 
         } else if (edtConfirmPassword.getText().toString().trim().equals("")) {
-            mesg = Utils.getResourceString(context, R.string.enterPassword);
+            mesg = Utils.getResourceSting(context, R.string.enterPassword);
 
         } else if (edtMobileNo.getText().toString().trim().equals("")) {
-            mesg = Utils.getResourceString(context, R.string.enterMobile);
+            mesg = Utils.getResourceSting(context, R.string.enterMobile);
 
         } else if (!edtConfirmPassword.getText().toString().trim().equals(edtPassword.getText().toString().trim())) {
-            mesg = Utils.getResourceString(context, R.string.unmatchPassword);
+            mesg = Utils.getResourceSting(context, R.string.unmatchPassword);
 
         } else if (!chkAgree.isChecked()) {
-            mesg = Utils.getResourceString(context, R.string.selectCheckbox);
+            mesg = Utils.getResourceSting(context, R.string.selectCheckbox);
         }
         return mesg;
     }
