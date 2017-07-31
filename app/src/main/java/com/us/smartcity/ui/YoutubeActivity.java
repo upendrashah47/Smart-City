@@ -59,6 +59,7 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
             // Hiding player controls
             youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.CHROMELESS);
+            youTubePlayer.setFullscreen(true);
         }
     }
 

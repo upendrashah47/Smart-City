@@ -12,28 +12,30 @@ public class User {
     long Mobileno;
     int date;
 
-    public User(){
+    public User() {
 
     }
-    public User(int id, String FirstName, String LastName, String Emailid, String Password, long Mobileno, int date){
-        this.id=id;
-        this.FirstName =FirstName;
-        this.LastName=LastName;
-        this.Emailid=Emailid;
-        this.Password=Password;
-        this.Mobileno=Mobileno;
-        this.date=date;
-    }
-    public User(String FirstName, String LastName, String Emailid, String Password, long Mobileno, int date){
-        this.FirstName =FirstName;
-        this.LastName=LastName;
-        this.Emailid=Emailid;
-        this.Password=Password;
-        this.Mobileno=Mobileno;
-        this.date=date;
+
+    public User(int id, String FirstName, String LastName, String Emailid, String Password, long Mobileno, int date) {
+        this.id = id;
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.Emailid = Emailid;
+        this.Password = Password;
+        this.Mobileno = Mobileno;
+        this.date = date;
     }
 
-    public int getId(){
+    public User(String FirstName, String LastName, String Emailid, String Password, long Mobileno, int date) {
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.Emailid = Emailid;
+        this.Password = Password;
+        this.Mobileno = Mobileno;
+        this.date = date;
+    }
+
+    public int getId() {
         return id;
     }
 
@@ -46,7 +48,7 @@ public class User {
     }
 
     public void setFirstName(String firstName) {
-       this.FirstName = firstName;
+        this.FirstName = firstName;
     }
 
     public String getLastName() {
@@ -89,4 +91,4 @@ public class User {
         this.date = date;
     }
 
-   }
+}

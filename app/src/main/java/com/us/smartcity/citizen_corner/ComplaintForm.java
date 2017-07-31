@@ -12,10 +12,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,14 +39,14 @@ public class ComplaintForm extends AppCompatActivity implements AdapterView.OnIt
 
 
     private static final int SELECT_FILE = 1;
-    private static final int TAKE_PICK= 1;
+    private static final int TAKE_PICK = 1;
     Spinner spinner1, spinner2;
     Button sub, can;
     ImageView iv1, iv2, iv3;
-    EditText comp_desc,cont_pers,address1,mob_no;
-    String comp_desc_s,cont_pers_s,address1_s,mob_no_s;
+    EditText comp_desc, cont_pers, address1, mob_no;
+    String comp_desc_s, cont_pers_s, address1_s, mob_no_s;
 
-    String lat="", lon="";
+    String lat = "", lon = "";
     Button btnShowAddress;
     TextView tvAddress;
 
@@ -62,7 +60,7 @@ public class ComplaintForm extends AppCompatActivity implements AdapterView.OnIt
         setContentView(R.layout.complaintform);
 
         can = (Button) findViewById(R.id.cancle);
-        btnShowAddress=(Button)findViewById(R.id.btnShowAddress);
+        btnShowAddress = (Button) findViewById(R.id.btnShowAddress);
 
         btnShowAddress.setOnClickListener(new View.OnClickListener() {
 
@@ -104,9 +102,9 @@ public class ComplaintForm extends AppCompatActivity implements AdapterView.OnIt
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                comp_desc=(EditText)findViewById(R.id.comp_desc);
-                cont_pers=(EditText)findViewById(R.id.cont_pers);
-                mob_no=(EditText)findViewById(R.id.mob_no);
+                comp_desc = (EditText) findViewById(R.id.comp_desc);
+                cont_pers = (EditText) findViewById(R.id.cont_pers);
+                mob_no = (EditText) findViewById(R.id.mob_no);
 
                 comp_desc_s = comp_desc.getText().toString();
                 cont_pers_s = cont_pers.getText().toString();
@@ -117,49 +115,45 @@ public class ComplaintForm extends AppCompatActivity implements AdapterView.OnIt
                         Toast.makeText(ComplaintForm.this, "Enter Complaint Description",
                                 Toast.LENGTH_LONG).show();
 
-                    }
-                    else if (cont_pers_s.equals("")) {
+                    } else if (cont_pers_s.equals("")) {
                         Toast.makeText(ComplaintForm.this, "Enter Contact Person",
                                 Toast.LENGTH_LONG).show();
 
-                    }
-                    else if (mob_no_s.equals("")) {
+                    } else if (mob_no_s.equals("")) {
                         Toast.makeText(ComplaintForm.this, "Enter Mobile Number",
                                 Toast.LENGTH_LONG).show();
 
                     }
 
+                } else {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(ComplaintForm.this);
+                    // Setting Dialog Title
+                    alertDialog.setTitle("Confirm Complaint...");
+                    // Setting Dialog Message
+                    alertDialog.setMessage("Are you sure?");
+                    // Setting Icon to Dialog
+                    // Setting Positive "Yes" Button
+                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Write your code here to invoke YES event
+                            Toast.makeText(getApplicationContext(), "We Recevied Your Complaint ", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), CitizenFragment.class);
+                            startActivity(i);
+                        }
+                    });
+
+                    // Setting Negative "NO" Button
+                    alertDialog.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Write your code here to invoke NO event
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Showing Alert Message
+                    alertDialog.show();
+
                 }
-                else
-                {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(ComplaintForm.this);
-                // Setting Dialog Title
-                alertDialog.setTitle("Confirm Complaint...");
-                // Setting Dialog Message
-                alertDialog.setMessage("Are you sure?");
-                // Setting Icon to Dialog
-                // Setting Positive "Yes" Button
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int which) {
-                        // Write your code here to invoke YES event
-                        Toast.makeText(getApplicationContext(), "We Recevied Your Complaint ", Toast.LENGTH_SHORT).show();
-                        Intent i=new Intent(getApplicationContext(),CitizenFragment.class);
-                        startActivity(i);
-                    }
-                });
-
-                // Setting Negative "NO" Button
-                alertDialog.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Write your code here to invoke NO event
-                        dialog.cancel();
-                    }
-                });
-
-                // Showing Alert Message
-                alertDialog.show();
-
-            }
             }
         });
 
@@ -235,15 +229,14 @@ public class ComplaintForm extends AppCompatActivity implements AdapterView.OnIt
 
         try {
             List<Address> addresses = geocoder.getFromLocation(Double.parseDouble(lat), Double.parseDouble(lon), 1);
-            if(addresses != null) {
+            if (addresses != null) {
                 Address returnedAddress = addresses.get(0);
                 StringBuilder strReturnedAddress = new StringBuilder("Address:\n");
-                for(int i=0; i<returnedAddress.getMaxAddressLineIndex(); i++) {
+                for (int i = 0; i < returnedAddress.getMaxAddressLineIndex(); i++) {
                     strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
                 }
                 ret = strReturnedAddress.toString();
-            }
-            else{
+            } else {
                 ret = "No Address returned!";
             }
         } catch (IOException e) {
@@ -294,17 +287,16 @@ public class ComplaintForm extends AppCompatActivity implements AdapterView.OnIt
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode,
                                     int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode){
+        switch (requestCode) {
 
             case 1:
 
-                if(resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK) {
                     userImage1 = (Bitmap) data.getExtras().get("data");
                     Bundle extras = data.getExtras();
                     userImage1 = (Bitmap) extras.get("data");
@@ -315,8 +307,8 @@ public class ComplaintForm extends AppCompatActivity implements AdapterView.OnIt
 
                 break;
             case 2:
-                if(resultCode == RESULT_OK) {
-                    userImage2 = (Bitmap)data.getExtras().get("data");
+                if (resultCode == RESULT_OK) {
+                    userImage2 = (Bitmap) data.getExtras().get("data");
                     Bundle extras = data.getExtras();
                     userImage2 = (Bitmap) extras.get("data");
                     iv2.setImageBitmap(userImage2);
@@ -327,10 +319,10 @@ public class ComplaintForm extends AppCompatActivity implements AdapterView.OnIt
                 break;
 
             case 3:
-                if(resultCode == RESULT_OK) {
-                    userImage3 = (Bitmap)data.getExtras().get("data");
+                if (resultCode == RESULT_OK) {
+                    userImage3 = (Bitmap) data.getExtras().get("data");
                     Bundle extras = data.getExtras();
-                    userImage3= (Bitmap) extras.get("data");
+                    userImage3 = (Bitmap) extras.get("data");
                     iv3.setImageBitmap(userImage3);
 
                 }/*if resultCode Case 3

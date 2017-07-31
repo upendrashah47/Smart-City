@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-import com.us.smartcity.Traffic_detail.LightSignals;
+import com.us.smartcity.ui.TrafficSignalsActivity;
 
 /**
  * Created by Bhaskar on 29-10-2015.
@@ -37,7 +37,7 @@ public class TrafficDetail extends ListFragment {
 
 
                 // Launching new Activity on selecting single List Item
-                Intent i = new Intent(getActivity().getApplicationContext(), LightSignals.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), TrafficSignalsActivity.class);
                 // sending data to new activity
                 getActivity().startActivity(i);
                 break;
