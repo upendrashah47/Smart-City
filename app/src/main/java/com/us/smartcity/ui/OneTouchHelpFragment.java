@@ -29,13 +29,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.json.JSONObject;
-
 import com.us.smartcity.R;
 import com.us.smartcity.onetouch.Place;
 import com.us.smartcity.onetouch.PlaceDialogFragment;
 import com.us.smartcity.onetouch.PlaceJSONParser;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -243,7 +242,13 @@ public class OneTouchHelpFragment extends FragmentActivity {
                     getWindowManager().getDefaultDisplay().getMetrics(dm);
 
                     // Creating a dialog fragment to display the photo
-                    PlaceDialogFragment dialogFragment = new PlaceDialogFragment(place, dm);
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("place", place);
+                    bundle.putInt("widthPixels", dm.widthPixels);
+                    bundle.putInt("heightPixels", dm.heightPixels);
+//                    PlaceDialogFragment dialogFragment = new PlaceDialogFragment(place, dm);
+                    PlaceDialogFragment dialogFragment = new PlaceDialogFragment();
+                    dialogFragment.setArguments(bundle);
 
                     // Getting a reference to Fragment Manager
                     FragmentManager fm = getSupportFragmentManager();
@@ -315,7 +320,7 @@ public class OneTouchHelpFragment extends FragmentActivity {
             br.close();
 
         } catch (Exception e) {
-            Log.d("Exception while downloading url", e.toString());
+            Log.e("Exception downlding url", e.toString());
         } finally {
             iStream.close();
             urlConnection.disconnect();

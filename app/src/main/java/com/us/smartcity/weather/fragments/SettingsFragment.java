@@ -26,14 +26,8 @@ package com.us.smartcity.weather.fragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.preference.SwitchPreference;
+import android.preference.*;
 import android.view.MenuItem;
-
 import com.us.smartcity.R;
 import com.us.smartcity.ui.WeatherActivity;
 import com.us.smartcity.utils.Config;
@@ -41,6 +35,7 @@ import com.us.smartcity.utils.Pref;
 
 public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private SharedPreferences preferences;
 
     private SwitchPreference geolocationEnabledPreference;
     private EditTextPreference manualLocationPreference;
@@ -50,6 +45,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.app_preferences);
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         geolocationEnabledPreference = (SwitchPreference) findPreference(getString(R.string.pref_geolocation_enabled));
         manualLocationPreference = (EditTextPreference) findPreference(getString(R.string.pref_manual_location));
@@ -89,7 +85,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
     private void bindPreferenceSummaryToValue(Preference preference) {
         preference.setOnPreferenceChangeListener(this);
-        onPreferenceChange(preference, Pref.getString(getActivity(), preference.getKey(), null));
+        onPreferenceChange(preference, preferences.getString(preference.getKey(), null));
     }
 
     @Override

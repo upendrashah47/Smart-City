@@ -16,8 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-//import com.us.smartcity.R;
-
 import com.us.smartcity.R;
 
 import java.io.IOException;
@@ -25,106 +23,120 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+//import com.us.smartcity.R;
+
 // Defining DialogFragment class to show the place details with photo
-public class PlaceDialogFragment extends DialogFragment{
-		
-	TextView mTVPhotosCount = null;
-	TextView mTVVicinity = null;
-	ViewFlipper mFlipper = null;
-	Place mPlace = null;
-	DisplayMetrics mMetrics = null;
-		
-	public PlaceDialogFragment(){
-		super();
-	}
-		
-	public PlaceDialogFragment(Place place, DisplayMetrics dm){
-		super();				
-		this.mPlace = place;
-		this.mMetrics  = dm;
-	}
-		
-	@Override
-	public void onCreate(Bundle savedInstanceState) {			
-			
-		// For retaining the fragment on screen rotation
-		setRetainInstance(true);		
-		super.onCreate(savedInstanceState);
-	}	
-		
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-		Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.dialog_layout, null);
-			
-		// Getting reference to ViewFlipper
-		mFlipper = (ViewFlipper) v.findViewById(R.id.flipper);
-		
-		// Getting reference to TextView to display photo count
-		mTVPhotosCount = (TextView) v.findViewById(R.id.tv_photos_count);
-		
-		// Getting reference to TextView to display place vicinity
-		mTVVicinity = (TextView) v.findViewById(R.id.tv_vicinity);
-			
-			
-		if(mPlace!=null){
-				
-			// Setting the title for the Dialog Fragment
-			getDialog().setTitle(mPlace.mPlaceName);
-		
-			// Array of references of the photos
-			Photo[] photos = mPlace.mPhotos;
-			
-			// Setting Photos count
-			mTVPhotosCount.setText("Photos available : " + photos.length);
-			
-			// Setting the vicinity of the place
-			mTVVicinity.setText(mPlace.mVicinity);			
-					
-			// Creating an array of ImageDownloadTask to download photos
-			ImageDownloadTask[] imageDownloadTask = new ImageDownloadTask[photos.length];
-				
-			int width = (int)(mMetrics.widthPixels*3)/4;	
-			int height = (int)(mMetrics.heightPixels*1)/2;
-				
-			String url = "https://maps.googleapis.com/maps/api/place/photo?";
-			String key = "key=AIzaSyCfdXATlz7jtM6MEvy9Xh_3_g_Ivc5ysXE";
-			String sensor = "sensor=true";
-			String maxWidth="maxwidth=" + width;
-			String maxHeight = "maxheight=" + height;
-			url = url + "&" + key + "&" + sensor + "&" + maxWidth + "&" + maxHeight;						
-				
-			// Traversing through all the photoreferences
-			for(int i=0;i<photos.length;i++){
-				// Creating a task to download i-th photo 
-				imageDownloadTask[i] = new ImageDownloadTask();
-				
-				String photoReference = "photoreference="+photos[i].mPhotoReference;
-				
-				// URL for downloading the photo from Google Services
-				url = url + "&" + photoReference;
-				
-				// Downloading i-th photo from the above url
-				imageDownloadTask[i].execute(url);
-			} 	
-		}
-		return v;
-	}
-		
-	@Override
-	public void onDestroyView() {
-		if (getDialog() != null && getRetainInstance())
-			getDialog().setDismissMessage(null);
-		super.onDestroyView();
-	}
-	
-	
-	private Bitmap downloadImage(String strUrl) throws IOException{
-		Bitmap bitmap=null;
+public class PlaceDialogFragment extends DialogFragment {
+
+    TextView mTVPhotosCount = null;
+    TextView mTVVicinity = null;
+    ViewFlipper mFlipper = null;
+    Place mPlace = null;
+    //    DisplayMetrics mMetrics = null;
+    int widthPixels;
+    int heightPixels;
+
+
+    public PlaceDialogFragment() {
+        super();
+
+
+    }
+
+//    public PlaceDialogFragment(Place place, DisplayMetrics dm) {
+//        super();
+//        this.mPlace = place;
+//        this.mMetrics = dm;
+//    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        // For retaining the fragment on screen rotation
+        setRetainInstance(true);
+        super.onCreate(savedInstanceState);
+
+        mPlace = getArguments().getParcelable("place");
+        widthPixels = getArguments().getInt("widthPixels");
+        heightPixels = getArguments().getInt("heightPixels");
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.dialog_layout, null);
+
+        // Getting reference to ViewFlipper
+        mFlipper = (ViewFlipper) v.findViewById(R.id.flipper);
+
+        // Getting reference to TextView to display photo count
+        mTVPhotosCount = (TextView) v.findViewById(R.id.tv_photos_count);
+
+        // Getting reference to TextView to display place vicinity
+        mTVVicinity = (TextView) v.findViewById(R.id.tv_vicinity);
+
+
+        if (mPlace != null) {
+
+            // Setting the title for the Dialog Fragment
+            getDialog().setTitle(mPlace.mPlaceName);
+
+            // Array of references of the photos
+            Photo[] photos = mPlace.mPhotos;
+
+            // Setting Photos count
+            mTVPhotosCount.setText("Photos available : " + photos.length);
+
+            // Setting the vicinity of the place
+            mTVVicinity.setText(mPlace.mVicinity);
+
+            // Creating an array of ImageDownloadTask to download photos
+            ImageDownloadTask[] imageDownloadTask = new ImageDownloadTask[photos.length];
+
+//            int width = (int) (mMetrics.widthPixels * 3) / 4;
+//            int height = (int) (mMetrics.heightPixels * 1) / 2;
+
+            int width = (int) (widthPixels * 3) / 4;
+            int height = (int) (heightPixels * 1) / 2;
+
+            String url = "https://maps.googleapis.com/maps/api/place/photo?";
+            String key = "key=AIzaSyCfdXATlz7jtM6MEvy9Xh_3_g_Ivc5ysXE";
+            String sensor = "sensor=true";
+            String maxWidth = "maxwidth=" + width;
+            String maxHeight = "maxheight=" + height;
+            url = url + "&" + key + "&" + sensor + "&" + maxWidth + "&" + maxHeight;
+
+            // Traversing through all the photoreferences
+            for (int i = 0; i < photos.length; i++) {
+                // Creating a task to download i-th photo
+                imageDownloadTask[i] = new ImageDownloadTask();
+
+                String photoReference = "photoreference=" + photos[i].mPhotoReference;
+
+                // URL for downloading the photo from Google Services
+                url = url + "&" + photoReference;
+
+                // Downloading i-th photo from the above url
+                imageDownloadTask[i].execute(url);
+            }
+        }
+        return v;
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (getDialog() != null && getRetainInstance())
+            getDialog().setDismissMessage(null);
+        super.onDestroyView();
+    }
+
+
+    private Bitmap downloadImage(String strUrl) throws IOException {
+        Bitmap bitmap = null;
         InputStream iStream = null;
-        try{
+        try {
             URL url = new URL(strUrl);
-            
+
             /** Creating an http connection to communcate with url */
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -137,23 +149,24 @@ public class PlaceDialogFragment extends DialogFragment{
             /** Creating a bitmap from the stream returned from the url */
             bitmap = BitmapFactory.decodeStream(iStream);
 
-        }catch(Exception e){
+        } catch (Exception e) {
             Log.d("Exception while downloading url", e.toString());
-        }finally{
+        } finally {
             iStream.close();
         }
         return bitmap;
     }
-	
-	private class ImageDownloadTask extends AsyncTask<String, Integer, Bitmap>{
+
+    private class ImageDownloadTask extends AsyncTask<String, Integer, Bitmap> {
         Bitmap bitmap = null;
+
         @Override
         protected Bitmap doInBackground(String... url) {
-            try{
-            	// Starting image download
+            try {
+                // Starting image download
                 bitmap = downloadImage(url[0]);
-            }catch(Exception e){
-                Log.d("Background Task",e.toString());
+            } catch (Exception e) {
+                Log.d("Background Task", e.toString());
             }
             return bitmap;
         }
@@ -161,13 +174,13 @@ public class PlaceDialogFragment extends DialogFragment{
         @Override
         protected void onPostExecute(Bitmap result) {
             // Creating an instance of ImageView to display the downloaded image               
-        	ImageView iView = new ImageView(getActivity().getBaseContext());            
+            ImageView iView = new ImageView(getActivity().getBaseContext());
 
             // Setting the downloaded image in ImageView
             iView.setImageBitmap(result);
-            
+
             // Adding the ImageView to ViewFlipper
-            mFlipper.addView(iView);            
+            mFlipper.addView(iView);
 
             // Showing download completion message
             Toast.makeText(getActivity().getBaseContext(), "Image downloaded successfully", Toast.LENGTH_SHORT).show();
