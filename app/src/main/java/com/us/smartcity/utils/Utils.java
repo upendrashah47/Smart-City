@@ -183,9 +183,9 @@ public class Utils {
     /*
     * Function which returns Host resources
     * */
-//    public static String getHostResourceSting(Context context, int resId) {
-//        return Utils.getResourceSting(context, R.string.apiHost) + Utils.getResourceSting(context, R.string.apiVersion) + Utils.getResourceSting(context, resId);
-//    }
+    public static String getHostResourceSting(Context context, int resId) {
+        return Utils.getResourceSting(context, R.string.apiHost) + Utils.getResourceSting(context, R.string.apiVersion) + Utils.getResourceSting(context, resId);
+    }
 
     /*
     * add activity stack function

@@ -29,6 +29,7 @@
     <!--<string name="open_weather_maps_app_id">44db6a862fba0b067b1930da0d769e98</string>-->
     <string name="open_weather_maps_app_id">fa73a44154c73c03015385120c8a166b</string>
 
+
     <string name="weather_sunny">&#xf00d;</string>
     <string name="weather_clear_night">&#xf02e;</string>
     <string name="weather_foggy">&#xf014;</string>
@@ -298,4 +299,28 @@
     <string name="internetConnection">Internet Connection</string>
     <string name="doYouWantToExit">Do you want to exit?</string>
     <string name="exit">Exit</string>
+
+
+    <!-- API key And credential-->
+    <string name="apiHostData">pocketexperts.testplanets.com</string>
+    <string name="apiScheme">http</string>
+    <string name="apiHost">http://pocketexperts.testplanets.com/api/</string>
+    <string name="apiHostPic">http://pocketexperts.testplanets.com/public/media/avatar/</string>
+    <string name="apiHostAudio">http://pocketexperts.testplanets.com/public/media/audio/</string>
+
+    <string name="apiKey">pocket@2016@expert#</string>
+    <string name="apiVersion">v1</string>
+
+    <string name="apiCode">code</string>
+    <string name="apiMsg">message</string>
+    <string name="apiDeviceType">device_type</string>
+    <string name="apiUdid">udid</string>
+    <string name="apiLastUpdated">2017-01-01 00:00:00</string>
+
+    <!-- ======= LOGIN API =========== -->
+    <string name="loginJSON">/user/login</string>
+    <string name="loginFbJSON">/user/loginwithfacebook</string>
+    <string name="loginTAG">TAG_LOGIN</string>
+    <string name="keyName">name</string>
+
 </resources>
